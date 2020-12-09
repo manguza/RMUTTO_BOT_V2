@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    {% block header %}
+    {% include "base/header.html" %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/admin/addtext.css') }}">
+
+</head>
+<body>
+    <div class="container" style="margin-bottom: 250px;">
+        <div class="container2">
+            <form action="{{ url_for('getaddtext') }}" method="POST">
+                <div class="view">
+                    <div class="col-25">
+                        <label for="text">ข้อความที่ต้องการให้แชทบอทตอบ</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="text" name="text" placeholder="ใส่ข้อความ..." required/>
+                    </div>
+                </div>
+                <div class="view">
+                    <div class="col-25">
+                        <label for="hyperlink">URL</label>
+                        <a style="color: red; font-size: 10px;">(* ถ้ามี)</a>
+                    </div>
+                    <div class="col-75">
+                        <input type="url" id="hyperlink" name="hyperlink" placeholder="ใส่ URL ..."/>
+                    </div>
+                </div>
+                <div class="view">
+                    <div class="col-25">
+                        <label for="search_text">คำค้นหาที่ต้องการให้แชทบอทตอบ</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="searh_text" name="search_text" placeholder="ใส่ข้อความค้นหา..." required/>
+                    </div>
+                </div>
+                <div class="view">
+                    <div class="col-25">
+                        <label for="in_response_to">ข้อความที่ผู้ใช้ถาม</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="in_response_to" name="in_response_to" placeholder="ใส่ข้อความที่ผู้ใช้ถาม..." required/>
+                    </div>
+                </div>
+                <div class="view">
+                    <div class="col-25">
+                        <label for="search_in_response_to">คำค้นหาที่ผู้ใช้ถาม</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="search_in_response_to" name="search_in_response_to" placeholder="ใส่ข้อฃความค้นหาที่ผู้ใช้ถาม..." required/>
+                    </div>
+                </div>
+                <!-- <div class="view">
+                    <input type="hidden" value="{{msg}}" id="msg">
+                    <input type="submit" value="Submit" onclick="alert({{msg}})"/>
+                </div> -->
+                
+                result of addition : {{msg}}
+            </form>
+        </div>
+    </div>
+</body>
+
+{% block footer %}
+{% include "base/footer.html" %}
+{% endblock %}
+
+
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <script src="{{url_for('static', filename='js/jquery-3.5.1.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dataTables.bootstrap4.min.css') }}">
+
+    {% block headerList %}
+    {% include "base/headerList.html" %}
+    {% endblock %}
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/admin/list.css') }}" />
+    <style>html,body,h1,h2,h3,h4,h5 {font-family: "Bai Jamjuree", sans-serif}</style>
+
+</head>
+<body>
+    
+    <div class="container mb-3 mt-3">
+        <div class="row">
+        <div class="col-sm-12">
+        <table class="table table-striped table-bordered mydatatable" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">ID</th>
+                    <th>ข้อความที่แชทบอทตอบ</th>
+                    <th>คำค้นหาที่แชทบอทตอบ</th>
+                    <th>ข้อความที่ผู้ใช้ถาม</th>
+                    <th>คำค้นหาที่ผุ้ใช้ถาม</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td style="text-align: center;">{{ row["id"] }}</td>
+                    <td>{{ row["text"] }}</td>
+                    <td>{{ row["search_text"] }}</td>
+                    <td>{{ row["in_response_to"] }}</td>
+                    <td>{{ row["search_in_response_to"] }}</td>
+                    <td><input type="submit" value="แก้ไขข้อมูล" onclick="document.getElementById('id{{row['id']}}').style.display='block'" /></td>
+                    <form action="{{url_for('deleteData')}}" method="POST">
+                        <input type="hidden" value="{{ row['id'] }}" id="deleteListData" name="deleteListData" />
+                        <td><input type="submit" value="ลบข้อมูล" onclick="return trueDelete({{row['id']}})"/></td>    
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+
+            <tfoot>
+                <tr>
+                    <th style="text-align: center;">ID</th>
+                    <th>ข้อความที่แชทบอทตอบ</th>
+                    <th>คำค้นหาที่แชทบอทตอบ</th>
+                    <th>ข้อความที่ผู้ใช้ถาม</th>
+                    <th>คำค้นหาที่ผุ้ใช้ถาม</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            
+        </table>
+    </div>
+    </div>
+    </div>
+    
+    {% for row in rows %}
+    <div id="id{{row['id']}}" class="modal">
+
+        <div class="modal-content animate" >
+        
+            <form action="{{url_for('editdata')}}" method="POST">
+                <div class="containerEdit">
+                    <label for="Eid"><b>ID</b></label>
+                    <input type="hidden" value="{{ row['id'] }}" name="Eid" id="Eid"/>
+                    <input type="text" value="{{row['id']}}" disabled>
+      
+                    <label for="Etext"><b>Text</b></label>
+                    <input type="text" placeholder="Enter Text" name="Etext" id="Etext" value="{{row['text']}}">
+
+                    <label for="Ehyperlink"><b>Url</b></label>
+                    <a style="color: red; font-size: 10px;">(* ถ้ามี)</a>
+                    <input type="url" placeholder="Enter URL" name="Ehyperlink" id="Ehyperlink">
+            
+                    <label for="Estext"><b>Search Text</b></label>
+                    <input type="text" placeholder="Enter Search Text" name="Estext" id="Estext" value="{{row['search_text']}}">
+
+                    <label for="Eirt"><b>In Response To</b></label>
+                    <input type="text" placeholder="Enter In Response To" name="Eirt" id="Eirt" value="{{row['in_response_to']}}">
+
+                    <label for="Esirt"><b>Search In Response To</b></label>
+                    <input type="text" placeholder="Enter Search In Response To" name="Esirt" id="Esirt" value="{{row['search_in_response_to']}}">
+              
+                    <button type="submit" class="btEdit">แก้ไข</button>
+                </div>
+            </form>
+
+            <div class="containerEdit" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id{{row['id']}}').style.display='none'" class="cancelbtn">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+{% block footerList %}
+{% include "base/footerList.html" %}
+{% endblock %}
+
+<script src="{{url_for('static', filename='js/list.js')}}"></script>
+
+</html>

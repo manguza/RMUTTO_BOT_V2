@@ -1,0 +1,24 @@
+:root {
+    --body-bg: linear-gradient(135deg, #f5f7fa 0%, #AFEEEE 100%);
+    --msger-bg: #fff;
+    --border: 2px solid #ddd;
+    --left-msg-bg: #ececec;
+    --right-msg-bg: #579ffb;
+}
+  
+html {
+    box-sizing: border-box;
+}
+  
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    align-items: center;
+    background-image: var(--body-bg);
+}

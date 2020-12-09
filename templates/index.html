@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMUTTO BOT</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    
+    {% block headerIndex %}
+    {% include "base/headerIndex.html" %}
+    {% endblock %}
+
+</head>
+<body>
+    <section>
+        <!-- partial:index.partial.html -->
+        <section class="msger">
+            <header class="msger-header">
+                <div class="msger-header-title">
+                    <i class="material-icons">computer</i> RMUTTO CHATBOT <i class="material-icons">computer</i>
+                </div>
+            </header>
+
+            <main class="msger-chat" style="background-image: url('static/logo.png');">
+                <div class="msg left-msg">
+                    <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                            <div class="msg-info-name">RMUTTO BOT</div>
+                        </div>
+
+                        <div class="msg-text">
+                            สวัสดีครับ, มีปัญหาอะไรให้ช่วยครับ ​<b>อยากสอบถามข้อมูลเบื้องต้น</b> หรือ <b>เอกสารใบคำร้องต่าง ๆ</b> ของงานวิชาการและงานทะเบียนของมหาวิทยาลัยฯ สอบถามได้เลยครับ 😄  
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <form class="msger-inputarea">
+                <input type="text" class="msger-input" id="textInput" placeholder="กรอกข้อความ...">
+                <button type="submit" class="msger-send-btn">ส่ง</button>
+            </form>
+        </section>
+    </section>
+</body>
+
+{% block footer %}
+{% include "base/footer.html" %}
+{% endblock %}
+
+<script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+</html>
