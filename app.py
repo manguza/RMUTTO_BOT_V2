@@ -18,7 +18,7 @@ bot = ChatBot("MyBot", logic_adapters=[
      ],read_only = True)
     
 trainer = ChatterBotCorpusTrainer(bot)
-trainer.train("start")
+trainer.train("document")
 
 #----------------------------------- ChatBot -----------------------------------#
 @app.route('/') 
