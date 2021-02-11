@@ -13,8 +13,8 @@
 
 <ul style="z-index: 2;">
     <li><a class="active" href="{{url_for('index')}}">หน้าแรก</a></li>
-    <li style="width: 25%"><a href="http://www.cpc.ac.th/cpcnew/index/">เว็บไซต์มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ</a></li>
-    <li style="width: 30%"><a href="http://regis.rmutto.ac.th/registrar/home.asp">ระบบทะเบียนมหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ</a></li>
+    <li style="width: auto"><a href="http://www.cpc.ac.th/cpcnew/index/">เว็บไซต์มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ</a></li>
+    <li style="width: auto"><a href="http://regis.rmutto.ac.th/registrar/home.asp">ระบบทะเบียนมหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ</a></li>
     <li><a href="mailto:reg@rmutto.ac.th">ติดต่อ</a></li>
     <li><a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">เข้าสู่ระบบ</a></li>
 </ul>
@@ -23,7 +23,7 @@
     <form class="modal-content animate" action="{{url_for('login')}}" method="post">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="" alt="Avatar" class="avatar">
+            <!-- <img src="" alt="Avatar" class="avatar"> -->
         </div>
 
         <div class="containerLogin">

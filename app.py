@@ -15,10 +15,10 @@ bot = ChatBot("MyBot", logic_adapters=[
         'import_path':'chatterbot.logic.BestMatch'
         
      }
-     ],read_only = True)
+     ],read_only = False)
     
-trainer = ChatterBotCorpusTrainer(bot)
-trainer.train("document")
+# trainer = ChatterBotCorpusTrainer(bot)
+# trainer.train("document")
 
 #----------------------------------- ChatBot -----------------------------------#
 @app.route('/') 
