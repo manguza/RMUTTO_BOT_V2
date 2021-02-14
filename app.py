@@ -4,18 +4,25 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.trainers import ChatterBotCorpusTrainer
+from chatterbot import filters
+from chatterbot.comparisons import levenshtein_distance
+from chatterbot.response_selection import get_first_response
 import sqlite3 as sql
 #from pythainlp import word_tokenize
 
 app = Flask(__name__)
 app.secret_key = 'random string'
 
-bot = ChatBot("MyBot", logic_adapters=[
+bot = ChatBot("MyBot",
+    filters=[filters.get_recent_repeated_responses],
+    logic_adapters=[
     {
-        'import_path':'chatterbot.logic.BestMatch'
-        
-     }
-     ],read_only = False)
+        'import_path':'chatterbot.logic.BestMatch',
+        "statement_comparison_function": chatterbot.comparisons.levenshtein_distance,
+        "response_selection_method": chatterbot.response_selection.get_first_response,
+        'default_response': 'ผมขอโทษ ข้อมูลที่ท่านถาม ไม่มีอยู่ในระบบ',
+        'maximum_similarity_threshold': 0.90
+    }],read_only = False)
     
 # trainer = ChatterBotCorpusTrainer(bot)
 # trainer.train("document")
