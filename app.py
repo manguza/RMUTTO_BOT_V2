@@ -20,12 +20,12 @@ bot = ChatBot("MyBot",
         'import_path':'chatterbot.logic.BestMatch',
         "statement_comparison_function": chatterbot.comparisons.levenshtein_distance,
         "response_selection_method": chatterbot.response_selection.get_first_response,
-        'default_response': 'ผมขอโทษ ข้อมูลที่ท่านถาม ไม่มีอยู่ในระบบ',
+        #'default_response': 'ผมขอโทษ ข้อมูลที่ท่านถาม ไม่มีอยู่ในระบบ',
         'maximum_similarity_threshold': 0.90
-    }],read_only = False)
+    }],read_only = True)
     
-# trainer = ChatterBotCorpusTrainer(bot)
-# trainer.train("document")
+trainer = ChatterBotCorpusTrainer(bot)
+trainer.train("trainBot/form6.yml")
 
 #----------------------------------- ChatBot -----------------------------------#
 @app.route('/') 
